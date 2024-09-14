@@ -1,0 +1,6 @@
+HEIGHT = 1000
+WIDTH = 1600
+FPS = 120
+DEFAULT_IMAGE_SIZE = (300, 300)
+
+BG_IMAGE_PATH = 'SLOTS PY/slots graphics/0/bg.png'
