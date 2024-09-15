@@ -7,11 +7,12 @@ class Game:
         pygame.init()
         self.screen = pygame.display.set_mode((WIDTH, HEIGHT))
         pygame.display.set_caption('Slot_Demo')
-        #self.clock = pygame.time.Clock()
+        self.clock = pygame.time.Clock()
         self.bg_image = pygame.image.load(BG_IMAGE_PATH)
+        #self.bg_image = pygame.transform.scale(self.bg_image, (WIDTH, HEIGHT-100))
 
         self.machine = Machine()
-        #self.delta_time = 0
+        self.delta_time = 0
 
         bg_music = pygame.mixer.Sound('SLOTS PY/Vantage_5050.mp3')
         bg_music.play(loops=-1)
@@ -25,13 +26,13 @@ class Game:
                 if event.type == pygame.QUIT:
                     pygame.quit()
         
-            #
-            #
+            self.delta_time = (pygame.time.get_ticks() - self.start_time) / 1000
+            self.start_time = pygame.time.get_ticks()
 
             pygame.display.update()
             self.screen.blit(self.bg_image, (0,0))
-            #self.machine.update(self.delta_time)
-            #self.clock.tick(FPS)
+            self.machine.update(self.delta_time)
+            self.clock.tick(FPS)
 
 if __name__ == '__main__':
     game = Game()
