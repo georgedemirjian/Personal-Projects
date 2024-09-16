@@ -10,9 +10,9 @@ Y_OFFSET = 0
 
 GAME_INDICES = [1,2,3]
 
-MENU_IMAGE_PATH = "SLOTS PY/menu_screen.png"
-BG_IMAGE_PATH = "SLOTS PY/slots graphics/0/bg.png"
-IMAGES_PATH = "SLOTS PY/slots graphics/0/symbols"
+MENU_IMAGE_PATH = "menu_screen.png"
+BG_IMAGE_PATH = "slots graphics/0/bg.png"
+IMAGES_PATH = "slots graphics/0/symbols"
 IMAGES = {
     'diamond' : IMAGES_PATH + "/0_diamond.png",
     'floppy' : IMAGES_PATH + "/0_floppy.png",

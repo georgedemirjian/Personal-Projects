@@ -16,7 +16,7 @@ class Game:
         self.machine = Machine()
         self.delta_time = 0
 
-        bg_music = pygame.mixer.Sound('SLOTS PY/Vantage_5050.mp3')
+        bg_music = pygame.mixer.Sound('Vantage_5050.mp3')
         bg_music.play(loops=-1)
 
     def menu(self):

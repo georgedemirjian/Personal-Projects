@@ -36,11 +36,16 @@ class Reel:
                         symbol.kill()
                         self.symbol_list.add(Symbol(IMAGES[random.choice(self.shuffled_reels)], ((symbol.x_val), -190), symbol_idx))
 
-    
     def start_spin(self, delay_time):
         self.delay_time = delay_time
         self.spin_time = 1000 + delay_time
         self.reel_is_moving = True
+    
+    def reel_spin_result(self):
+        spin_symbols = []
+        for i in GAME_INDICES:
+            spin_symbols.append(self.symbol_list.sprites()[i].symbol_name)
+        return spin_symbols[::-1]
 
 class Symbol(pygame.sprite.Sprite):
     def __init__(self, filePath, coords, index):
