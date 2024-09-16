@@ -20,3 +20,8 @@ IMAGES = {
     'seven' : IMAGES_PATH + "/0_seven.png",
     'telephone' : IMAGES_PATH + "/0_telephone.png"
 }
+
+TEXT_COLOR = 'White'
+UI_FONT = 'SupplyCenterFont.ttf'
+UI_FONT_SIZE = 20
+WIN_FONT_SIZE = 60

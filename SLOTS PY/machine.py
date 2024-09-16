@@ -2,6 +2,7 @@ import pygame
 from settings import *
 from reel import *
 from player import Player
+from ui import UI
 
 class Machine:
     def __init__(self):
@@ -17,6 +18,7 @@ class Machine:
 
         self.set_reels()
         self.currentPlayer = Player()
+        self.ui = UI(self.currentPlayer)
 
     
     def cooldowns(self):
@@ -31,7 +33,7 @@ class Machine:
             if self.check_wins(self.spin_result):
                 self.win_data = self.check_wins(self.spin_result)
                 self.pay_player(self.win_data, self.currentPlayer)
-                print(self.currentPlayer.get_data())
+                #print(self.currentPlayer.get_data())
                 #self.ui.win_text_angle = random.randint(-4,4)
 
 
@@ -46,7 +48,7 @@ class Machine:
             self.currentPlayer.place_bet()
             self.machine_balance += self.currentPlayer.bet_size
             self.currentPlayer.last_payout = None
-            print(self.currentPlayer.get_data())
+            #print(self.currentPlayer.get_data())
 
     def update(self, delta_time):
         self.cooldowns()
@@ -55,6 +57,7 @@ class Machine:
         for reel in self.reel_list:
             self.reel_list[reel].symbol_list.draw(self.display_surface)
             self.reel_list[reel].symbol_list.update()
+        self.ui.update()
         
     def draw_reels(self, delta_time):
         for reel in self.reel_list:
