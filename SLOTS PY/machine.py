@@ -18,11 +18,11 @@ class Machine:
     def set_reels(self):
         if not self.reel_list:
             x_tl = 10
-            y_tl = -300
+            y_tl = -220
         while self.reel_index < 5:
             if self.reel_index > 0:
-                x_tl = x_tl + 300 + X_OFFSET
-                y_tl = y_tl
+                x_tl = x_tl + 220 + X_OFFSET
+                y_tl = y_tl 
             self.reel_list[self.reel_index] = Reel((x_tl, y_tl))
             self.reel_index += 1
 

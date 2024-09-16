@@ -14,7 +14,7 @@ class Reel:
         for index, item in enumerate(self.shuffled_reels):
             self.symbol_list.add(Symbol(IMAGES[item], coords, index))
             coords = list(coords)
-            coords[1] += 300
+            coords[1] += 215
             coords = tuple(coords)
 
 class Symbol(pygame.sprite.Sprite):
@@ -26,6 +26,7 @@ class Symbol(pygame.sprite.Sprite):
         self.index = index
 
         self.image = pygame.image.load(filePath).convert_alpha()
+        self.image = pygame.transform.scale(self.image, (220, 220))
         self.rect = self.image.get_rect(topleft = coords)
         self.x_val = self.rect.left
     
