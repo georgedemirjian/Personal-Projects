@@ -1,27 +1,27 @@
 HEIGHT = 720
 WIDTH = 1280
 FPS = 120
-DEFAULT_IMAGE_SIZE = (220, 220)
+#DEFAULT_IMAGE_SIZE = (220, 220)
 
-START_X = 0
-START_Y = -220
+#START_X = 0
+#START_Y = -220
 X_OFFSET = 38
-Y_OFFSET = 0
+#Y_OFFSET = 0
 
 GAME_INDICES = [1,2,3]
 
-MENU_IMAGE_PATH = "menu_screen.png"
-BG_IMAGE_PATH = "slots graphics/0/bg.png"
-IMAGES_PATH = "slots graphics/0/symbols"
+MENU_IMAGE_PATH = "aesthetics/images/op_menu.jpg"
+BG_IMAGE_PATH = "aesthetics/images/bg.png"
+
 IMAGES = {
-    'diamond' : IMAGES_PATH + "/0_diamond.png",
-    'floppy' : IMAGES_PATH + "/0_floppy.png",
-    'hourglass' : IMAGES_PATH + "/0_hourglass.png",
-    'seven' : IMAGES_PATH + "/0_seven.png",
-    'telephone' : IMAGES_PATH + "/0_telephone.png"
+    'orange' : "aesthetics/images/symbols/mera_mera.png",
+    'blue' :  "aesthetics/images/symbols/gura_gura.png",
+    'red' : "aesthetics/images/symbols/ope_ope.png",
+    'white' :  "aesthetics/images/symbols/ito_ito.png",
+    'purple' :  "aesthetics/images/symbols/gomu_gomu.png"
 }
 
 TEXT_COLOR = 'White'
-UI_FONT = 'SupplyCenterFont.ttf'
+UI_FONT = 'aesthetics/font/SupplyCenterFont.ttf'
 UI_FONT_SIZE = 20
-WIN_FONT_SIZE = 60
+WIN_FONT_SIZE = 55

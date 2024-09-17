@@ -33,22 +33,16 @@ class Machine:
             if self.check_wins(self.spin_result):
                 self.win_data = self.check_wins(self.spin_result)
                 self.pay_player(self.win_data, self.currentPlayer)
-                #print(self.currentPlayer.get_data())
-                #self.ui.win_text_angle = random.randint(-4,4)
 
-
-        
     
     def get_input(self):
         keys = pygame.key.get_pressed()
-        #if keys[pygame.K_SPACE]:
         if keys[pygame.K_SPACE] and self.can_toggle and self.currentPlayer.balance >= self.currentPlayer.bet_size:
             self.toggle_spinning()
             self.spin_time = pygame.time.get_ticks()
             self.currentPlayer.place_bet()
             self.machine_balance += self.currentPlayer.bet_size
             self.currentPlayer.last_payout = None
-            #print(self.currentPlayer.get_data())
 
     def update(self, delta_time):
         self.cooldowns()
@@ -89,25 +83,30 @@ class Machine:
         return self.spin_result
     
     def check_wins(self, result):
-        hits= {}
+        hits = {}
         
         horizontal_values = []
         for value in result.values():
             horizontal_values.append(value)
         rows, cols = len(horizontal_values), len(horizontal_values[0])
-        hvals2 = [[""] * rows for _ in range(cols)]
-        for x in range(rows):
-            for y in range(cols):
-                hvals2[y][rows - x - 1] = horizontal_values[x][y]
-        horizontal = [item[::-1] for item in hvals2]
-
-        for row in horizontal:
+        
+        for row in horizontal_values:
             for symbol in row:
                 if row.count(symbol) >= 3:
                     possible_win = [index for index, value in enumerate(row) if symbol == value]
 
-                    if len(self.longest_sequence(possible_win)) >=3:
-                        hits[horizontal.index(row)+1] = [symbol, self.longest_sequence(possible_win)]
+                    if len(self.longest_sequence(possible_win)) >= 3:
+                        hits[f'Row {horizontal_values.index(row) + 1}'] = [symbol, self.longest_sequence(possible_win)]
+
+        for col_idx in range(cols):
+            column = [horizontal_values[row_idx][col_idx] for row_idx in range(rows)]  # Extract column
+            for symbol in column:
+                if column.count(symbol) >= 3:
+                    possible_win = [index for index, value in enumerate(column) if symbol == value]
+
+                    if len(self.longest_sequence(possible_win)) >= 3:
+                        hits[f'Column {col_idx + 1}'] = [symbol, self.longest_sequence(possible_win)]
+        
         if hits:
             return hits
 
@@ -129,9 +128,11 @@ class Machine:
     def pay_player(self, win_data, currentPlayer):
         multiplier = 0
         spin_payout = 0
-
         for v in win_data.values():
-            multiplier += len(v[1])
+            if len(v[1]) >= 5:
+                multiplier += len(v[1]) * 2
+            else:
+                multiplier += len(v[1]) - 1
         spin_payout = (multiplier * currentPlayer.bet_size)
         currentPlayer.balance += spin_payout
         self.machine_balance -= spin_payout

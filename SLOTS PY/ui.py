@@ -14,7 +14,7 @@ class UI:
             print(f"Currently, the UI_FONT variable is set to {UI_FONT}")
             print("Does the file exist?")
             quit()
-        self.win_text_angle = random.randint(-4, 4)
+        self.win_text_angle = random.randint(-2, 2)
 
     def display_info(self):
         player_data = self.player.get_data()
@@ -27,8 +27,6 @@ class UI:
         x = self.display_surface.get_size()[0] - 20
         bet_rect = bet_surf.get_rect(bottomright = (x, y))
 
-        #pygame.draw.rect(self.display_surface, False, balance_rect)
-        #pygame.draw.rect(self.display_surface, False, bet_rect)
         self.display_surface.blit(balance_surf, balance_rect)
         self.display_surface.blit(bet_surf, bet_rect)
 
@@ -36,7 +34,7 @@ class UI:
             last_payout = player_data['last_payout']
             win_surf = self.win_font.render("WIN! $" + last_payout, True, TEXT_COLOR, None)
             x1 = 640
-            y1 = self.display_surface.get_size()[1] - 60
+            y1 = self.display_surface.get_size()[1] - 40
             win_surf = pygame.transform.rotate(win_surf, self.win_text_angle)
             win_rect = win_surf.get_rect(center = (x1, y1))
             self.display_surface.blit(win_surf, win_rect)
